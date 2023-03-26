@@ -26,7 +26,10 @@ while varValidaValor == False:
     else:
         varValidaValor = True
 
-if precoProduto >= 50 and precoProduto < 200:
+if precoProduto < 50:
+    novoPreco = 0
+
+elif precoProduto >= 50 and precoProduto < 200:
     novoPreco = (precoProduto * 0.05)
 
 elif precoProduto >= 200 and precoProduto < 500:
@@ -40,4 +43,4 @@ else:
 
 novoPreco = (precoProduto - novoPreco)
 
-print("\nProduto: ", nomeProduto, "\nPreço original: R$", precoProduto, "\nPreço com desconto: R$", novoPreco)
+print(f"\nProduto: {nomeProduto}\nPreço original: R${precoProduto}\nPreço com desconto: R${novoPreco}")
