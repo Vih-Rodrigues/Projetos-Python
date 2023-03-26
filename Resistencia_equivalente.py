@@ -12,7 +12,7 @@ varQtdeResistencias = int(input("Informe a quantidade de resistências ligadas e
 vetResistencias = []
 
 for i in range(varQtdeResistencias):
-    vetResistencias.append(int(input("Informe a resistencia: ")))
+    vetResistencias.append(int(input(f"Informe a {i+1} resistencia: ")))
 
 print(f"\nResistência equivalente: {sum(vetResistencias)}") # f = format, utilizado para interpolação
 print(f"\nMaior resistência: {max(vetResistencias)}\nMenor resistência: {min(vetResistencias)}")
