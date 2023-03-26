@@ -6,7 +6,7 @@ import decimal
 
 varPeso = float(input("Informe o peso: "))
 varAltura = float(input("Informe a altura em centímetros: "))
-varIMC = float(varPeso / (varAltura*varAltura))
+varIMC = float(varPeso / ((varAltura/100)*(varAltura/100)))
 
 #Saída
 if varIMC <= 18.5:
