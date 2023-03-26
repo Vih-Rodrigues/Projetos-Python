@@ -1,5 +1,12 @@
 """
-Python: Função com indeterminados parâmetros
+Python: Elabore uma aplicação que receba um número indeterminado de valores informados pelo usuário.
+Crie funções para determinar:
+• Quantidade de números pares
+• Quais são os números ímpares
+• O maior número
+• O menor número
+• A média dos números
+Apresente os resultados na tela.
 """
 import os
 
@@ -14,11 +21,11 @@ def fPares(lista):
     return contPares
 
 def fImpares(lista):
-    contImpares = 0
+    vImpares = ''
     for i in lista:
         if lista[i] % 2 != 0:
-            contImpares =+ 1
-    return contImpares
+            vImpares = vImpares + " - " + str(lista[i])
+    return vImpares
 
 def fMaior(lista):
     return max(lista)
@@ -31,7 +38,19 @@ def fMedia(lista):
 
 def main():
     limpaTela()
-    numLista = int(input("Informe os valores que entrarão na lista: "))
-    print(f"Pares: {qtdPares(numLista)}")
+    vLista = []
+    vAuxiliar = 1
+    print("A seguir, informe os valores que entrarão na lista.\nPara sair informe 0.")
+    while vAuxiliar != 0:
+        try:
+            vAuxiliar = int(input("> "))
+            vLista.append(vAuxiliar)
+        except ValueError:
+            print("Valor inválido!")
+    print(f"Quantidade de pares: {fPares(vLista)}")
+    print(f"Ímpares: {fImpares(vLista)}")
+    print(f"Maior valor da lista: {fMaior(vLista)}")
+    print(f"Menor valor da lista: {fMenor(vLista)}")
+    print(f"Média dos valores informados na lista: {fMedia(vLista)}")
 
 main()
