@@ -16,15 +16,12 @@ def limpaTela():
 def fPares(lista):
     contPares = 0
     for i in lista:
-        if lista[i] % 2 == 0:
-            contPares =+ 1
+        if i % 2 == 0:
+            contPares += 1
     return contPares
 
 def fImpares(lista):
-    vImpares = ''
-    for i in lista:
-        if lista[i] % 2 != 0:
-            vImpares = vImpares + " - " + str(lista[i])
+    vImpares = ' - '.join(str(x) for x in lista if x % 2 != 0)
     return vImpares
 
 def fMaior(lista):
@@ -44,6 +41,8 @@ def main():
     while vAuxiliar != 0:
         try:
             vAuxiliar = int(input("> "))
+            if vAuxiliar == 0:
+                break
             vLista.append(vAuxiliar)
         except ValueError:
             print("Valor inválido!")
