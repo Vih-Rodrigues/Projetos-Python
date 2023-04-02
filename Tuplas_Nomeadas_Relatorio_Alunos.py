@@ -30,14 +30,14 @@ def fQtdeAprovados(pAluno):
     for i in pAluno:
         if i.situacao == "Aprovado":
             vAuxQtdeAprovados += 1
-    return vAuxQtdeAprovados
+    return vAuxQtdeAprovados / 0.06
 
 def fQtdeAlunosReprovados(pAluno):
     vAuxQtdeReprovados = 0
     for i in pAluno:
         if i.situacao == "Reprovado":
             vAuxQtdeReprovados += 1
-    return vAuxQtdeReprovados
+    return vAuxQtdeReprovados / 0.06
 
 def fMostraRelatorio(pAluno):
     print("Relatório de notas:")
@@ -45,8 +45,8 @@ def fMostraRelatorio(pAluno):
     for i in pAluno:
         print(f"|   {i.nome}    |   {str(i.nota1)}   |   {str(i.nota2)}   |   {str(i.media)}  |   {i.situacao}    |")
     print(f"\nMédia da classe: {fMedia(pAluno)}")
-    print(f"Quantidade de alunos aprovados: {fQtdeAprovados(pAluno)}")
-    print(f"Quantidade de alunos reprovados: {fQtdeAlunosReprovados(pAluno)}")
+    print(f"Quantidade de alunos aprovados: {fQtdeAprovados(pAluno)} %")
+    print(f"Quantidade de alunos reprovados: {fQtdeAlunosReprovados(pAluno)} %")
 
 def main():
     fLimpaTela()
