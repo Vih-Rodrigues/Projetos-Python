@@ -11,6 +11,12 @@ import os
 def fLimpaTela():
     os.system('cls')
 
+def fVerificaSeEPalindromo(pLista):
+    vListaReversa = []
+    for caractere in reversed(pLista):
+        vListaReversa.append(caractere)
+    return vListaReversa
+
 def main():
     fLimpaTela()
     vLista = []
@@ -22,7 +28,9 @@ def main():
             vStringAuxiliar = input("Digite: ")
             for caractere in vStringAuxiliar:
                 vLista.append(caractere)
-            if vLista == vLista[::-1]: # [::-1] => operador de fatiamento, inverte os caracteres da lista original
+            # uma forma de verificar é utilizando o operador de fatiamento:
+            #if vLista == vLista[::-1]: # [::-1] -> inverte os caracteres da lista original
+            if vLista == fVerificaSeEPalindromo(vLista):
                 print("É palíndromo!\n")
             else:
                 print("Não é palíndromo.\n")
