@@ -12,29 +12,29 @@ import os
 def fLimpaTela():
     os.system('cls')
 
-def fGeraUsername(pNomeCompleto):
+def fGeraUsername(pNomeCompleto, pListaUsernames):
     # Transforma a string recebida no username padrão primeironome.ultimosobrenome
     vPrimeiraLetraNome = pNomeCompleto[0]
     vNomeSeparado = pNomeCompleto.split()
     vUltimoSobrenome = vNomeSeparado[-1]
-    vUsernameTemp = vPrimeiraLetraNome + "." + vUltimoSobrenome
+    vUsernameTemp = vPrimeiraLetraNome + "." + vUltimoSobrenome + "@fatec.sp.gov.br"
     # Aqui começa a validação da lista de alunos
-    vListaUsernames = []
     vContador = 1
-    for i in vListaUsernames:
+    for i in pListaUsernames:
         if vUsernameTemp == i:
             vUsernameTemp = vUsernameTemp + str(vContador)
             vContador += 1
-    vUsernameFinal = vUsernameTemp + "@fatec.sp.gov.br"
-    vListaUsernames.append(vUsernameFinal)
+    vUsernameFinal = vUsernameTemp
+    pListaUsernames.append(vUsernameFinal)
     return vUsernameFinal
 
 def main():
     fLimpaTela()
+    vListaUsernames = []
     vQtdeAlunosRegistrados = int(input("Informe quantos alunos serão registrados: "))
     for i in range(vQtdeAlunosRegistrados):
         vNomeCompleto = input("\nInforme o nome completo: ")
         vSenha = input("Informe a senha, a mesma deve atender aos seguintes requisitos:\n- mínimo 8 caracteres\n- Números\n- Letras\n- Símbolos\n: ")
-        print(f"Seu username é: {fGeraUsername(vNomeCompleto)}")
+        print(f"Seu username é: {fGeraUsername(vNomeCompleto, vListaUsernames)}")
 
 main()
