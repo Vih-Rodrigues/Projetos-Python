@@ -18,7 +18,7 @@ def fGeraUsernamePadrao(pNomeCompleto):
     vNomeSeparado = pNomeCompleto.split()
     vUltimoSobrenome = vNomeSeparado[-1]
     vUsernameTemp = vPrimeiraLetraNome + "." + vUltimoSobrenome
-    return vUsernameTemp
+    return vUsernameTemp.lower()
 
 def fContaUsernamesIguais(pUsernameTemp, pListaUsernames):
     # Valida a lista de alunos pelos seus username padrão primeironome.ultimosobrenome
