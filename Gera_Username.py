@@ -12,29 +12,49 @@ import os
 def fLimpaTela():
     os.system('cls')
 
-def fGeraUsername(pNomeCompleto, pListaUsernames):
+def fGeraUsernamePadrao(pNomeCompleto):
     # Transforma a string recebida no username padrão primeironome.ultimosobrenome
     vPrimeiraLetraNome = pNomeCompleto[0]
     vNomeSeparado = pNomeCompleto.split()
     vUltimoSobrenome = vNomeSeparado[-1]
-    vUsernameTemp = vPrimeiraLetraNome + "." + vUltimoSobrenome + "@fatec.sp.gov.br"
-    # Aqui começa a validação da lista de alunos
-    vContador = 1
+    vUsernameTemp = vPrimeiraLetraNome + "." + vUltimoSobrenome
+    return vUsernameTemp
+
+def fContaUsernamesIguais(pUsernameTemp, pListaUsernames):
+    # Valida a lista de alunos pelos seus username padrão primeironome.ultimosobrenome
+    vContador = -1
     for i in pListaUsernames:
-        if vUsernameTemp == i:
-            vUsernameTemp = vUsernameTemp + str(vContador)
+        if pUsernameTemp == i:
             vContador += 1
-    vUsernameFinal = vUsernameTemp
-    pListaUsernames.append(vUsernameFinal)
+    return vContador
+
+def fGeraUsernameComNumero(pContador, pUsernameGerado):
+    if pContador != 0:
+        vUsernameFinal = pUsernameGerado + str(pContador) + "@fatec.sp.gov.br"
+    else:
+        vUsernameFinal = pUsernameGerado + "@fatec.sp.gov.br"
     return vUsernameFinal
+
+def fListaOficialDeEmails(pListaEmails):
+    print("\n\nLista de emails atualizada:")
+    for i in pListaEmails:
+        print(i)
 
 def main():
     fLimpaTela()
     vListaUsernames = []
+    vListaEmails = []
     vQtdeAlunosRegistrados = int(input("Informe quantos alunos serão registrados: "))
     for i in range(vQtdeAlunosRegistrados):
         vNomeCompleto = input("\nInforme o nome completo: ")
         vSenha = input("Informe a senha, a mesma deve atender aos seguintes requisitos:\n- mínimo 8 caracteres\n- Números\n- Letras\n- Símbolos\n: ")
-        print(f"Seu username é: {fGeraUsername(vNomeCompleto, vListaUsernames)}")
+        vUsername = fGeraUsernamePadrao(vNomeCompleto)
+        vListaUsernames.append(vUsername)
+        vContadorUsernameIguais = fContaUsernamesIguais(vUsername, vListaUsernames)
+        vUsernameFinal = fGeraUsernameComNumero(vContadorUsernameIguais, vUsername)
+        vListaEmails.append(vUsernameFinal)
+        print(f"\nSeu username é: {vUsernameFinal}")
+    fListaOficialDeEmails(vListaEmails)
+    print("\n")
 
 main()
